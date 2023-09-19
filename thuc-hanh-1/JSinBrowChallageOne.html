@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      JavaScript in the Browser: DOM and Events - Coding Challenge #1
+    </title>
+  </head>
+  <body>
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 1200px;
+        height: 600px;
+        background-color: cadetblue;
+      "
+    >
+      <input
+        id="du_doan"
+        placeholder="nhập dự đoán"
+        style="outline: none; width: 200px; margin-bottom: 10px"
+      />
+      <span>Nhập số dự đoán từ 1 đến 10</span>
+      <div>
+        <button
+          style="margin-left: 10px; margin-top: 10px"
+          onclick="handlesGame()"
+        >
+          Dự đoán
+        </button>
+        <button onclick="handleReset()">Khôi phục</button>
+      </div>
+      <span id="ket_qua_game" style="margin-top: 10px"></span>
+    </div>
+  </body>
+  <script>
+    const ket_qua = Math.floor(Math.random() * 10) + 1;
+    console.log(ket_qua);
+    const dulieu_dudoan = document.getElementById("du_doan");
+    const hienthi_ketqua = document.getElementById("ket_qua_game");
+    const handlesGame = () => {
+      if (+dulieu_dudoan.value === ket_qua) {
+        hienthi_ketqua.innerText = "Bạn đã nhập kết quả đúng";
+      } else {
+        hienthi_ketqua.innerHTML = "Bạn đã đoán sai";
+      }
+    };
+
+    const handleReset = () => {
+      dulieu_dudoan.value = null;
+    };
+  </script>
+</html>
